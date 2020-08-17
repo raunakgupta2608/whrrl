@@ -1,0 +1,124 @@
+.card {
+    background: url('../../assets/travis-essinger-oG01mozFb7o-unsplash.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-color: rgba(255,255,255,255);
+    overflow: scroll;
+}
+
+.card-img{
+    height: auto;
+}
+
+.card-img-overlay{
+    height: auto;
+}
+
+.card-body{
+    background-color: white;
+    width: 70%;
+    margin: 5% 15%;
+    height: auto;
+}
+.img-div{
+    display: flex;
+}
+
+.bold-text{
+    padding-top: 2%;
+    text-align: center;
+    font: Bold 22px/30px Open Sans;
+    letter-spacing: 2.2px;
+    color: #424242;
+    opacity: 1;
+}
+
+.form-div {
+    padding: 5% 5%;
+    width: 100%;
+    height: inherit;
+}
+mat-expansion-panel{
+    border: none;
+}
+
+mat-expansion-panel-header{
+    border-bottom: 0.5px solid #055BCE33;
+}
+
+.panel-title {
+    text-align: left;
+    font: SemiBold 22px/30px Open Sans;
+    letter-spacing: 2.2px;
+    color: #000000;
+    opacity: 1;
+}
+
+mat-icon {
+    color: #055BCE33;
+}
+
+.label{
+    margin-top: 3%;
+    text-align: left;
+    font: SemiBold 12px/17px Open Sans;
+    letter-spacing: 1.2px;
+    color: #5E5E5E;
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+.form-field{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #055BCE59;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+.save-next {
+    background: #4B93F2 0% 0% no-repeat padding-box;
+    border-radius: 16px;
+    opacity: 0.9;
+    width: 25%;
+    padding: 1% 2%;
+    border: none;
+}
+
+.text {
+    text-align: left;
+    font: SemiBold 16px/22px Open Sans;
+    letter-spacing: 1.6px;
+    color: #055BCE;
+    opacity: 1;
+}
+
+.submit {
+    background: #055BCE 0% 0% no-repeat padding-box;
+    border-radius: 16px;
+    opacity: 1;
+    padding: 1% 0%;
+    width: 25%;
+    border: none;
+}
+
+.submit-text {
+    text-align: left;
+    font: SemiBold 26px/36px Open Sans;
+    letter-spacing: 2.6px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+@media only screen and (max-width: 575px) {
+    .save-next {
+        width: 60%;
+        float: right;
+    }
+    .submit{
+        width: 50%;
+    }
+}
+

@@ -1,0 +1,320 @@
+<div class="main-wrapper">
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-1 col-xs-0 gridcol">
+          <div class="img-div rounded-circle justify-content-center"></div>
+          <div class="icon-list">
+              <mat-icon class="p-3">dashboard</mat-icon>
+              <mat-icon class="p-3">search</mat-icon>
+              <mat-icon class="p-3">show_chart</mat-icon>
+              <mat-icon class="p-3">home</mat-icon>
+              <mat-icon class="p-3">touch_app</mat-icon>
+              <mat-icon class="p-3">article</mat-icon>
+          </div>
+          <div class="bottom-list d-flex flex-column">
+              <mat-icon class="p-3">account_circle</mat-icon>
+              <mat-icon class="p-3">notifications</mat-icon>
+          </div>
+        </div>
+
+        <div class="col-md-1 col-xs-0 col-sm-0 sec-col">
+          <div class="sec-list">
+            <div class="">
+              Borrower<mat-icon class="search-icon align-middle pl-3">keyboard_arrow_down</mat-icon>
+            </div>
+            <div class="mt-2 sub-a sub-cat">
+              <span class="sub-a-text"></span>Sub Category A
+            </div>
+            <div class="sub-cat">
+              Sub Category B
+            </div>
+            <div class="sub-cat">
+              <span>Sub Category C</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 col-xs-12 x">
+          <p class="pending-text mt-5 ml-5">PENDING LOAN APPLICATION</p>
+          <div class="upper-div">
+              <div class="card big-card rounded">
+                  <div class="card-body">
+                    <div class="card small-card rounded">
+                      <div class="card-body rounded">
+                        <div class="container rounded">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-1 cols">
+                                  <div class="form-group">
+                                    <label for="bankname" class="label">Search</label>
+                                    <div class="fg">
+                                      <input type="name" [(ngModel)]="searchText" class="form-control search form-field" id="bankname" placeholder="search by Name/ ID/ ETC">
+                                      <mat-icon class="search-icon">search</mat-icon>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-xs-1 cols">
+                                  <div class="form-group">
+                                    <label for="bankname" class="label">Filter by Warehouse:</label>
+                                    <div class="fg">
+                                      <input type="name" class="form-control search form-field" id="bankname" placeholder="Select Warehouse">
+                                      <mat-icon class="search-icon">keyboard_arrow_down</mat-icon>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-xs-1 cols">
+                                  <div class="form-group">
+                                    <label for="bankname" class="label">Filter by Status:</label>
+                                    <div class="fg">
+                                      <input type="name" class="form-control search form-field" id="bankname" placeholder="Show All">
+                                      <mat-icon class="search-icon">keyboard_arrow_down</mat-icon>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-2 col-xs-1 cols">
+                                  <div class="form-group">
+                                    <label for="bankname" class="label">Export As:</label>
+                                    <div class="fg">
+                                      <mat-icon class="search-icon" (click)="exportexcel()">note_add</mat-icon>
+                                      <mat-icon class="search-icon" (click)="SavePDF()">picture_as_pdf</mat-icon>
+                                      <button printSectionId="table" ngxPrint><mat-icon class="search-icon">print</mat-icon></button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>  
+                    <div class="band">
+                      <table class="table" id="table" #table>
+                          <thead>
+                            <tr>
+                              <th scope="col">Application ID</th>
+                              <th scope="col">Name of Farmer</th>
+                              <th scope="col">Loan Application Date</th>
+                              <th scope="col">Transaction Date</th>
+                              <th scope="col">Loan Application Status</th>
+                              <th scope="col">CMA Appointment Date</th>
+                              <th scope="col">Details</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbody">
+                            <tr *ngFor="let a of arr | grdFilter: {id: searchText, farmer:searchText, appdate: searchText, transdate: searchText, appstatus: searchText, cmastatus: searchText };">
+                              <td scope="row" class="align-middle text-center">{{ a.id }}</td>
+                              <td class="align-middle text-center">{{ a.farmer }}</td>
+                              <td class="align-middle text-center">{{ a.appdate }}</td>
+                              <td class="align-middle text-center">{{ a.transdate }}</td>
+                              <td class="align-middle text-center appstatus">
+                                  <mat-icon class="pending-icon">info</mat-icon>{{ a.appstatus }}
+                              </td>
+                              <td class="align-middle text-center cmastatus">{{ a.cmastatus }}</td>
+                              <td class="align-middle text-center">
+                                  <mat-icon class="info-icon">info</mat-icon>
+                              </td>
+                            </tr>
+                          </tbody>
+                      </table>
+                    </div>
+                    <div class="container">
+                        <div class="row float-right">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                  <li class="page-item">
+                                    <a class="page-link rounded-circle small-circle float-right" href="#" aria-label="Previous">
+                                      <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                  </li>
+                                  <li class="page-item"><a class="page-link rounded-circle" href="#">1</a></li>
+                                  <li class="page-item"><a class="page-link rounded-circle" href="#">2</a></li>
+                                  <li class="page-item"><a class="page-link rounded-circle" href="#">3</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link rounded-circle small-circle float-left" href="#" aria-label="Next">
+                                    </a>
+                                  </li>
+                                </ul>
+                              </nav>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="main-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-1 col-xs-0 gridcol">
+            <div class="img-div rounded-circle justify-content-center"></div>
+            <div class="icon-list">
+                <mat-icon class="p-3">dashboard</mat-icon>
+                <mat-icon class="p-3">search</mat-icon>
+                <mat-icon class="p-3">show_chart</mat-icon>
+                <mat-icon class="p-3">home</mat-icon>
+                <mat-icon class="p-3">touch_app</mat-icon>
+                <mat-icon class="p-3">article</mat-icon>
+            </div>
+            <div class="bottom-list d-flex flex-column">
+                <mat-icon class="p-3">account_circle</mat-icon>
+                <mat-icon class="p-3">notifications</mat-icon>
+            </div>
+          </div>
+          <div class="col-md-1 col-xs-1 sec-col">
+            <div class="sec-list">
+              <div class="">
+                Borrower<mat-icon class="search-icon align-middle pl-3">keyboard_arrow_down</mat-icon>
+              </div>
+              <div class="mt-2 sub-a sub-cat">
+                <span class="sub-a-text"></span>Sub Category A
+              </div>
+              <div class="sub-cat">
+                Sub Category B
+              </div>
+              <div class="sub-cat">
+                <span>Sub Category C</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-{{i}} col-xs-12 x content">
+            <div class="d-flex flex-row toggle-div align-middle">
+              <button mat-raised-button class="btn btn-success toggle mt-5"></button>
+              <p class="pending-text mt-5 ml-5">PENDING LOAN APPLICATION</p>
+            </div>
+            <div class="upper-div">
+                <div class="card big-card rounded">
+                    <div class="card-body">
+                      <div class="card small-card rounded">
+                        <div class="card-body rounded">
+                          <div class="container rounded">
+                              <div class="row">
+                                  <div class="col-md-4 col-xs-1 cols">
+                                    <div class="form-group">
+                                      <label for="bankname" class="label">Search</label>
+                                      <div class="fg">
+                                        <input type="name" [(ngModel)]="searchText" class="form-control search form-field" id="bankname" placeholder="search by Name/ ID/ ETC">
+                                        <mat-icon class="search-icon">search</mat-icon>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3 col-xs-1 cols">
+                                    <div class="form-group">
+                                      <label for="bankname" class="label">Filter by Warehouse:</label>
+                                      <div class="fg">
+                                        <input type="name" class="form-control search form-field" id="bankname" placeholder="Select Warehouse">
+                                        <mat-icon class="search-icon">keyboard_arrow_down</mat-icon>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3 col-xs-1 cols">
+                                    <div class="form-group">
+                                      <label for="bankname" class="label">Filter by Status:</label>
+                                      <div class="fg">
+                                        <input type="name" class="form-control search form-field" id="bankname" placeholder="Show All">
+                                        <mat-icon class="search-icon">keyboard_arrow_down</mat-icon>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-2 col-xs-1 cols">
+                                    <div class="form-group">
+                                      <label for="bankname" class="label">Export As:</label>
+                                      <div class="fg">
+                                        <mat-icon class="search-icon" (click)="exportexcel()">note_add</mat-icon>
+                                        <mat-icon class="search-icon" (click)="SavePDF()">picture_as_pdf</mat-icon>
+                                        <button printSectionId="table" ngxPrint><mat-icon class="search-icon">print</mat-icon></button>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>  
+                        <div class="band">
+                            <table class="table" id="table" #table>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Application ID</th>
+                                    <th scope="col">Name of Farmer</th>
+                                    <th scope="col">Loan Application Date</th>
+                                    <th scope="col">Transaction Date</th>
+                                    <th scope="col">Loan Application Status</th>
+                                    <th scope="col">CMA Appointment Date</th>
+                                    <th scope="col">Details</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                  <tr *ngFor="let a of arr | grdFilter: {id: searchText, farmer:searchText, appdate: searchText, transdate: searchText, appstatus: searchText, cmastatus: searchText };">
+                                    <td scope="row" class="align-middle text-center">{{ a.id }}</td>
+                                    <td class="align-middle text-center">{{ a.farmer }}</td>
+                                    <td class="align-middle text-center">{{ a.appdate }}</td>
+                                    <td class="align-middle text-center">{{ a.transdate }}</td>
+                                    <td class="align-middle text-center appstatus">
+                                        <mat-icon class="pending-icon">info</mat-icon>{{ a.appstatus }}
+                                    </td>
+                                    <td class="align-middle text-center cmastatus">{{ a.cmastatus }}</td>
+                                    <td class="align-middle text-center">
+                                        <mat-icon class="info-icon">info</mat-icon>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="container">
+                            <div class="row float-right">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                      <li class="page-item">
+                                        <a class="page-link rounded-circle small-circle float-right" href="#" aria-label="Previous">
+                                          <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                      </li>
+                                      <li class="page-item"><a class="page-link rounded-circle" href="#">1</a></li>
+                                      <li class="page-item"><a class="page-link rounded-circle" href="#">2</a></li>
+                                      <li class="page-item"><a class="page-link rounded-circle" href="#">3</a></li>
+                                      <li class="page-item">
+                                        <a class="page-link rounded-circle small-circle float-left" href="#" aria-label="Next">
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div> -->
+
+
+                            <!-- <div class="container">
+                                <div class="row">
+                                    <div class="col-md-2 col-xs-1 band-text">Application ID</div>
+                                    <div class="col-md-2 col-xs-1 band-text">Name of Farmer</div>
+                                    <div class="col-md-2 col-xs-1 band-text">Loan Application Date</div>
+                                    <div class="col-xs-1 band-text">Transaction Date</div>
+                                    <div class="col-md-2 col-xs-1 band-text">Loan Application Status</div>
+                                    <div class="col-md-2 col-xs-1 band-text">CMA Appointment Date</div>
+                                    <div class="col-xs-1 band-text">Details</div>
+                                </div>
+                            </div> -->
